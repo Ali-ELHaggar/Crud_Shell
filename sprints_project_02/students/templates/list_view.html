@@ -1,0 +1,11 @@
+{% block content %}
+{% load static %}
+<div class="main">
+    {% for data in dataset %}
+    {{ data.f_name }}<br/>
+    {{ data.I_name }}<br/>
+    <hr/>
+    {% firstof break %}
+    {% endfor %}
+</div>
+{% endblock %}
