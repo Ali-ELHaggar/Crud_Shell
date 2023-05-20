@@ -5,6 +5,7 @@ from .models import Student
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import UpdateView
 from .forms import InputForm , StudentForm 
+from django.views.generic.edit import DeleteView
 
 # Create your views here.
 
@@ -46,4 +47,26 @@ def home_view2(request):
     context ={}
     context['StudentForm'] = form # pass the form to the context
     return render(request,"home2.html",context)
+
+class StudentUpdateView(UpdateView):
+    # specify the model you want to use
+    model = Student
+    # specify the fields
+    fields = [
+        "f_name",
+        "I_name"
+    ]
+    # can specify success url
+    # url to redirect after successfully
+    # updating details
+    success_url = "/"
+
+class StudentDeleteView(DeleteView):
+    #specify the model you want to use
+    model = Student
+    # can specify success url
+    # url to redirect after successfully
+    # deleting object
+    success_url ="/"
+    template_name = "students/student_confirm_delete.html"
 
